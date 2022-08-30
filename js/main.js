@@ -26,11 +26,11 @@ function Pago(){
 
 }
 let productoSeleccionado = Productos();
-let seleccioarnPago = Pago();
+let seleccionPago = Pago();
 const CalculoPago = (producto) =>{
-    switch (producto) {
+      switch (producto) {
         case 1:
-            switch (seleccionarPago) {
+            switch (seleccionPago) {
                 case 1:
                     console.log(nombreUsuario+" deberás pagar $"+(precio1));
                     break;
@@ -60,7 +60,7 @@ const CalculoPago = (producto) =>{
                     break;
             }
             case 3:
-                switch (seleccionarPago) {
+                switch (seleccionPago) {
                     case 1:
                         alert(nomarbreUsuario+" deberás pagar $"+(precio3));
                         break;
@@ -75,7 +75,7 @@ const CalculoPago = (producto) =>{
                         break;
                 }
                 case 4:
-                    switch (seleccionarPago) {
+                    switch (seleccionPago) {
                         case 1:
                             alert(nombreUsuario+" deberás pagar $"+(precio4));
                             break;
@@ -94,13 +94,12 @@ const CalculoPago = (producto) =>{
 
 let comprarMas;
 do{
-    comprarMas = prompt("desea seguir comprando? \n S para continuar - N para finalizar").toLowerCase();
+    comprarMas = prompt("desea finalizar la compra? \n S para finalizar - N para continuar").toLowerCase();
 }while(comprarMas!="s" && comprarMas!="n");
 
 if(comprarMas==="s"){
-
-}
-else if(comprarMas==="n"){
     alert("Acabas de finalizar tu compra");
+
+    
     CalculoPago(productoSeleccionado);
 }
