@@ -23,16 +23,16 @@ function Pago(){
     formaPago = parseInt(prompt("De que forma desea pagar?\n1) Efectivo \n2) Débito \n3) 3 cuotas sin interés\n4) Transferencia"));
     }
     return formaPago;
+
 }
 let productoSeleccionado = Productos();
-let numeroAleatorio = (Math.round(Math.random()*10));
-let seleccionPago = Pago();
+let seleccioarnPago = Pago();
 const CalculoPago = (producto) =>{
     switch (producto) {
         case 1:
-            switch (seleccionPago) {
+            switch (seleccionarPago) {
                 case 1:
-                    alert(nombreUsuario+" deberás pagar $"+(precio1));
+                    console.log(nombreUsuario+" deberás pagar $"+(precio1));
                     break;
                 case 2:
                     alert(nombreUsuario+" deberás pagar $"+(precio1));
@@ -60,9 +60,9 @@ const CalculoPago = (producto) =>{
                     break;
             }
             case 3:
-                switch (seleccionPago) {
+                switch (seleccionarPago) {
                     case 1:
-                        alert(nombreUsuario+" deberás pagar $"+(precio3));
+                        alert(nomarbreUsuario+" deberás pagar $"+(precio3));
                         break;
                     case 2:
                         alert(nombreUsuario+" deberás pagar $"+(precio3));
@@ -75,7 +75,7 @@ const CalculoPago = (producto) =>{
                         break;
                 }
                 case 4:
-                    switch (seleccionPago) {
+                    switch (seleccionarPago) {
                         case 1:
                             alert(nombreUsuario+" deberás pagar $"+(precio4));
                             break;
@@ -92,4 +92,15 @@ const CalculoPago = (producto) =>{
     }
 }
 
+let comprarMas;
+do{
+    comprarMas = prompt("desea seguir comprando? \n S para continuar - N para finalizar").toLowerCase();
+}while(comprarMas!="s" && comprarMas!="n");
 
+if(comprarMas==="s"){
+
+}
+else if(comprarMas==="n"){
+    alert("Acabas de finalizar tu compra");
+    CalculoPago(productoSeleccionado);
+}
