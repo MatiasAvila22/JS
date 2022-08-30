@@ -1,8 +1,8 @@
 let nombreUsuario;
-let producto1 = "PAPAS x 500gr";
-let producto2 = "HAMBURGUESAS x24";
-let producto3 = "PATITAS DE POLLO x kg" ;
-let producto4 = "CARITAS x 250gr";
+let producto1 = "PAPAS";
+let producto2 = "HAMBURGUESAS";
+let producto3 = "PATITAS DE POLLO" ;
+let producto4 = "CARITAS";
 let precio1 = 500;
 let precio2 = 2500;
 let precio3 = 700;
@@ -100,6 +100,10 @@ do{
 if(comprarMas==="s"){
     alert("Acabas de finalizar tu compra");
 
+    CalculoPago(productoSeleccionado);
     
+}
+else if(comprarMas==="n"){
+    alert("Momentaneamente las compras deben ser una por una. Sistema precario")
     CalculoPago(productoSeleccionado);
 }
