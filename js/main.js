@@ -9,9 +9,9 @@ let precio3 = 700;
 let precio4 = 400;
 
 do {
-    nombreUsuario = prompt("Ingrese su nombre por favor");
+    nombreUsuario = prompt("Ingrese su nombre completo");
 } while (nombreUsuario === "" || isNaN(nombreUsuario) === false );
-alert("Hola "+nombreUsuario);
+alert("Bienvenido "+nombreUsuario);
 
 const Productos = () =>{
     let seleccion = parseInt(prompt("Elegi un producto: \n1)"+producto1+" con un precio de $"+precio1+"\n2)"+producto2+" con un precio de $"+precio2+"\n3)"+producto3+" con un precio de $"+precio3+"\n4)"+producto4+" con un precio de $"+precio4));
