@@ -20,7 +20,7 @@ const Productos = () =>{
 function Pago(){
     let formaPago;
     while(formaPago!=1 && formaPago!=2 && formaPago!=3 && formaPago!=4){
-    formaPago = parseInt(prompt("De que forma desea pagar?\n1) Efectivo \n2) Débito \n3) 3 cuotas sin interés\n4) Transferencia"));
+    formaPago = parseInt(prompt("De que forma desea pagar?\n1) Efectivo \n2) Débito \n3) 3 cuotas sin interés\n4) 6 cuotas con un interes del 25%\n5) Transferencia"));
     }
     return formaPago;
 
@@ -32,7 +32,7 @@ const CalculoPago = (producto) =>{
         case 1:
             switch (seleccionPago) {
                 case 1:
-                    console.log(nombreUsuario+" deberás pagar $"+(precio1));
+                    alert(nombreUsuario+" deberás pagar $"+(precio1));
                     break;
                 case 2:
                     alert(nombreUsuario+" deberás pagar $"+(precio1));
@@ -41,9 +41,15 @@ const CalculoPago = (producto) =>{
                     alert(nombreUsuario+" deberás pagar 3 cuotas de: $"+(precio1));
                     break;
                 case 4:
+                    alert(nombreUsuario+" deberás pagar 6 cuotas de: $"+(precio3*1.45)/6);
+                    break;
+                case 5:
                     alert(nombreUsuario+" deberás transferir: $"+(precio1));
                     break;
+        
             }
+            break;
+
         case 2:
             switch (seleccionPago) {
                 case 1:
@@ -56,9 +62,15 @@ const CalculoPago = (producto) =>{
                     alert(nombreUsuario+" deberás pagar 3 cuotas de: $"+(precio2));
                     break;
                 case 4:
+                    alert(nombreUsuario+" deberás pagar 6 cuotas de: $"+(precio3*1.45)/6);
+                    break;
+                case 5:
                     alert(nombreUsuario+" deberás transferir: $"+(precio2));
                     break;
+
+        
             }
+            break;
             case 3:
                 switch (seleccionPago) {
                     case 1:
@@ -71,24 +83,34 @@ const CalculoPago = (producto) =>{
                         alert(nombreUsuario+" deberás pagar 3 cuotas de: $"+(precio3));
                         break;
                     case 4:
+                         alert(nombreUsuario+" deberás pagar 6 cuotas de: $"+(precio3*1.45)/6);
+                        break;
+                    case 5:
                         alert(nombreUsuario+" deberás transferir: $"+(precio3));
                         break;
+            
                 }
-                case 4:
-                    switch (seleccionPago) {
-                        case 1:
-                            alert(nombreUsuario+" deberás pagar $"+(precio4));
-                            break;
-                        case 2:
-                            alert(nombreUsuario+" deberás pagar $"+(precio4));
-                            break;
-                        case 3:
-                            alert(nombreUsuario+" deberás pagar 3 cuotas de: $"+(precio4));
-                            break;
-                        case 4:
-                            alert(nombreUsuario+" deberás transferir: $"+(precio4));
-                            break;
-                    }                
+                break;
+            case 4:
+                switch (seleccionPago) {
+                    case 1:
+                         alert(nombreUsuario+" deberás pagar $"+(precio4));
+                        break;
+                    case 2:
+                        alert(nombreUsuario+" deberás pagar $"+(precio4));
+                        break;
+                    case 3:
+                        alert(nombreUsuario+" deberás pagar 3 cuotas de: $"+(precio4));
+                        break;
+                    case 4:
+                        alert(nombreUsuario+" deberás pagar 6 cuotas de: $"+(precio3*1.45)/6);
+                        break;
+                    case 5:
+                        alert(nombreUsuario+" deberás transferir: $"+(precio4));
+                        break;
+            
+            }
+            break;
     }
 }
 
@@ -99,11 +121,15 @@ do{
 
 if(comprarMas==="s"){
     alert("Acabas de finalizar tu compra");
-
     CalculoPago(productoSeleccionado);
     
 }
 else if(comprarMas==="n"){
-    alert("Momentaneamente las compras deben ser una por una. Sistema precario")
-    CalculoPago(productoSeleccionado);
+    const  verProductos = ["papas", "hamburguesas", "patitas de pollo", "caritas"];
+    console.log(verProductos);
+    alert("Los productos se mostraran en consola");
 }
+
+
+
+
