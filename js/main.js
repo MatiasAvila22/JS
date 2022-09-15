@@ -11,9 +11,6 @@ const boxCarrito = document.getElementById("mi-carrito")
 
 
 
-
-
-
 let carrito =[]
 productos.forEach((producto) => {
     const div = document.createElement('div') 
@@ -23,7 +20,7 @@ productos.forEach((producto) => {
     <h3>${producto.nombre}</h3>
     <p>${producto.descrip}</p>
     <p class="precioProducto">Precio$ ${producto.precio}</p>
-    <button id="agregar${producto.id}" class="boton-agregar">agregar</i></button>
+    <button id="agregar${producto.id}" class="boton-agregar">agregar</button>
     `
     boxProductos.appendChild(div)
 
@@ -60,7 +57,7 @@ const renovarCarrito = () => {
         <p>${prod.nombre}</p>
         <p>${prod.precio}</p>
         <p>cantidad: <spanid ="cantidad">${prod.cantidad}</span></p>
-        <button onclick = "eliminarDelCarrito${prod.id}" class="boton-eliminar"><i class="fas fa trash-alt"></i></button>
+        <button onclick = "eliminarDelCarrito${prod.id}" class="boton-eliminar">ELIMINAR</button>
         `
         boxCarrito.appendChild(div)
     })
