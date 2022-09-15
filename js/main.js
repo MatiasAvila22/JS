@@ -1,135 +1,68 @@
-let nombreUsuario;
-let producto1 = "PAPAS";
-let producto2 = "HAMBURGUESAS";
-let producto3 = "PATITAS DE POLLO" ;
-let producto4 = "CARITAS";
-let precio1 = 500;
-let precio2 = 2500;
-let precio3 = 700;
-let precio4 = 400;
+let productos = [
+    {id: 1, nombre:"papas McCain", cantidad: 1, descrip: "papas McCain x2,5kg", Precio: 700, img: 'assets/papas.jpg'},
+    {id: 2, nombre:"Hamburguesas Swift", cantidad: 1, descrip: "Hamburguesas Swift clasicas x 160gr", Precio: 500, img: 'assets/descarga.jpg'},
+    {id: 3, nombre:"Patitas de pollo", cantidad: 1, descrip: "patitas de pollo x500gr", Precio: 800, img: 'assets/patitas.jpg'},
+    {id: 4, nombre:"Caritas McCain", cantidad: 1, descrip: "Cartias McCain x 600gr", Precio: 600, img: 'assets/caritas.jpg'},
+]
 
-do {
-    nombreUsuario = prompt("Ingrese su nombre completo");
-} while (nombreUsuario === "" || isNaN(nombreUsuario) === false );
-alert("Bienvenido "+nombreUsuario);
+const boxProductos = document.getElementById('box-productos')
+const boxCarrito = document.getElementById("mi-carrito")
 
-const Productos = () =>{
-    let seleccion = parseInt(prompt("Elegi un producto: \n1)"+producto1+" con un precio de $"+precio1+"\n2)"+producto2+" con un precio de $"+precio2+"\n3)"+producto3+" con un precio de $"+precio3+"\n4)"+producto4+" con un precio de $"+precio4));
-    return seleccion;
-} 
-function Pago(){
-    let formaPago;
-    while(formaPago!=1 && formaPago!=2 && formaPago!=3 && formaPago!=4){
-    formaPago = parseInt(prompt("De que forma desea pagar?\n1) Efectivo \n2) Débito \n3) 3 cuotas sin interés\n4) 6 cuotas con un interes del 25%\n5) Transferencia"));
-    }
-    return formaPago;
 
-}
-let productoSeleccionado = Productos();
-let seleccionPago = Pago();
-const CalculoPago = (producto) =>{
-      switch (producto) {
-        case 1:
-            switch (seleccionPago) {
-                case 1:
-                    alert(nombreUsuario+" deberás pagar $"+(precio1));
-                    break;
-                case 2:
-                    alert(nombreUsuario+" deberás pagar $"+(precio1));
-                    break;
-                case 3:
-                    alert(nombreUsuario+" deberás pagar 3 cuotas de: $"+(precio1));
-                    break;
-                case 4:
-                    alert(nombreUsuario+" deberás pagar 6 cuotas de: $"+(precio3*1.45)/6);
-                    break;
-                case 5:
-                    alert(nombreUsuario+" deberás transferir: $"+(precio1));
-                    break;
-        
-            }
-            break;
 
-        case 2:
-            switch (seleccionPago) {
-                case 1:
-                    alert(nombreUsuario+" deberás pagar $"+(precio2));
-                    break;
-                case 2:
-                    alert(nombreUsuario+" deberás pagar $"+(precio2));
-                    break;
-                case 3:
-                    alert(nombreUsuario+" deberás pagar 3 cuotas de: $"+(precio2));
-                    break;
-                case 4:
-                    alert(nombreUsuario+" deberás pagar 6 cuotas de: $"+(precio3*1.45)/6);
-                    break;
-                case 5:
-                    alert(nombreUsuario+" deberás transferir: $"+(precio2));
-                    break;
 
-        
-            }
-            break;
-            case 3:
-                switch (seleccionPago) {
-                    case 1:
-                        alert(nomarbreUsuario+" deberás pagar $"+(precio3));
-                        break;
-                    case 2:
-                        alert(nombreUsuario+" deberás pagar $"+(precio3));
-                        break;
-                    case 3:
-                        alert(nombreUsuario+" deberás pagar 3 cuotas de: $"+(precio3));
-                        break;
-                    case 4:
-                         alert(nombreUsuario+" deberás pagar 6 cuotas de: $"+(precio3*1.45)/6);
-                        break;
-                    case 5:
-                        alert(nombreUsuario+" deberás transferir: $"+(precio3));
-                        break;
-            
-                }
-                break;
-            case 4:
-                switch (seleccionPago) {
-                    case 1:
-                         alert(nombreUsuario+" deberás pagar $"+(precio4));
-                        break;
-                    case 2:
-                        alert(nombreUsuario+" deberás pagar $"+(precio4));
-                        break;
-                    case 3:
-                        alert(nombreUsuario+" deberás pagar 3 cuotas de: $"+(precio4));
-                        break;
-                    case 4:
-                        alert(nombreUsuario+" deberás pagar 6 cuotas de: $"+(precio3*1.45)/6);
-                        break;
-                    case 5:
-                        alert(nombreUsuario+" deberás transferir: $"+(precio4));
-                        break;
-            
-            }
-            break;
-    }
-}
 
-let comprarMas;
-do{
-    comprarMas = prompt("desea finalizar la compra? \n S para finalizar - N para continuar").toLowerCase();
-}while(comprarMas!="s" && comprarMas!="n");
 
-if(comprarMas==="s"){
-    alert("Acabas de finalizar tu compra");
-    CalculoPago(productoSeleccionado);
-    
-}
-else if(comprarMas==="n"){
-    const  verProductos = ["papas", "hamburguesas", "patitas de pollo", "caritas"];
-    console.log(verProductos);
-    alert("Los productos se mostraran en consola");
+
+let carrito =[]
+productos.forEach((producto) => {
+    const div = document.createElement('div') 
+    div.classList.add('producto')
+    div.innerHTML = `
+    <img src="${producto.img}" alt="">
+    <h3>${producto.nombre}</h3>
+    <p>${producto.descrip}</p>
+    <p class="precioProducto">Precio$ ${producto.precio}</p>
+    <button id="agregar${producto.id}" class="boton-agregar">agregar</i></button>
+    `
+    boxProductos.appendChild(div)
+
+    const boton = document.getElementById(`agregar${producto.id}`)
+
+    boton.addEventListener('click', () => {
+        agregarAlCarrito(producto.id)
+    })
+})
+
+const agregarAlCarrito = (prodId) => {
+    const item = productos.find((prod) =>prod.id === prodId)
+    carrito.push(item)
+    renovarCarrito()
+    console.log(carrito)
 }
 
 
+const eliminarDelCarrito = (prodId) => {
+    const item = carrito.find((prod) => producto.id ===prodId)
+    const indice = carrito.indexOf(item)
+    carrito.splice(indice, 1)
+    renovarCarrito()
 
+}
+
+
+const renovarCarrito = () => {
+    boxCarrito.innerHTML = ""
+    carrito.forEach((prod) =>{
+        const div = document.createElement("div")
+        div.className = ("productoEnCarrito")
+        div.innerHTML = `
+        <p>${prod.nombre}</p>
+        <p>${prod.precio}</p>
+        <p>cantidad: <spanid ="cantidad">${prod.cantidad}</span></p>
+        <button onclick = "eliminarDelCarrito${prod.id}" class="boton-eliminar"><i class="fas fa trash-alt"></i></button>
+        `
+        boxCarrito.appendChild(div)
+    })
+}
 
