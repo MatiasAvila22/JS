@@ -1,8 +1,49 @@
+const btn = document.getElementById('inicioSesio'),
+  checkbox = document.getElementById('checkbox'),
+  email = document.getElementById('email'),
+  password = document.getElementById('password'),
+  cliente = document.getElementById('nombre')
+btn.value = 'Registrar'
+
+function guardar(valor) {
+  let usuario = {
+    username: email.value,
+    password: password.value,
+    nombre: cliente.value,
+  }
+
+  if (valor === 'sessionStorage') {
+    sessionStorage.setItem('usuario', JSON.stringify(usuario))
+  }
+  if (valor === 'localStorage') {
+    localStorage.setItem('usuario', JSON.stringify(usuario))
+  }
+  return usuario
+}
+
+function recuperarDatos(datos) {
+  if (datos) {
+    nombre.value = datos.nombre
+    email.value = datos.username
+    password.value = datos.password
+  }
+}
+
+recuperarDatos(JSON.parse(localStorage.getItem('usuario')))
+
+btn.addEventListener('click', (e) => {
+  e.preventDefault()
+
+
+  checkbox.checked ? guardar('localStorage') : guardar('sessionStorage')
+})
+
+
 let productos = [
-    {id: 1, nombre:"papas McCain", cantidad: 1, descrip: "papas McCain x2,5kg", Precio: 700, img: 'assets/papas.jpg'},
-    {id: 2, nombre:"Hamburguesas Swift", cantidad: 1, descrip: "Hamburguesas Swift clasicas x 160gr", Precio: 500, img: 'assets/descarga.jpg'},
-    {id: 3, nombre:"Patitas de pollo", cantidad: 1, descrip: "patitas de pollo x500gr", Precio: 800, img: 'assets/patitas.jpg'},
-    {id: 4, nombre:"Caritas McCain", cantidad: 1, descrip: "Cartias McCain x 600gr", Precio: 600, img: 'assets/caritas.jpg'},
+    {id: 1, nombre:"papas McCain", cantidad: 1, descrip: "papas McCain x2,5kg", precio:700, img: 'assets/papas.jpg'},
+    {id: 2, nombre:"Hamburguesas Swift", cantidad: 1, descrip: "Hamburguesas Swift clasicas x 160gr", precio:500, img: 'assets/descarga.jpg'},
+    {id: 3, nombre:"Patitas de pollo", cantidad: 1, descrip: "patitas de pollo x500gr", precio:800, img: 'assets/patitas.jpg'},
+    {id: 4, nombre:"Caritas McCain", cantidad: 1, descrip: "Cartias McCain x 600gr", precio:600, img: 'assets/caritas.jpg'},
 ]
 
 const boxProductos = document.getElementById('box-productos')
