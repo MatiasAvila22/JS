@@ -1,18 +1,16 @@
-const btn = document.getElementById('inicioSesio'),
-  checkbox = document.getElementById('checkbox'),
-  email = document.getElementById('email'),
-  password = document.getElementById('password'),
-  cliente = document.getElementById('nombre')
+const btn = document.getElementById('inicioSesion'),
+checkbox = document.getElementById('checkbox'),
+email = document.getElementById('email'),
+ password = document.getElementById('password'),
+cliente = document.getElementById('nombre')
 btn.value = 'Registrar'
-
 function guardar(valor) {
-  let usuario = {
-    username: email.value,
-    password: password.value,
-    nombre: cliente.value,
-  }
-
-  if (valor === 'sessionStorage') {
+let usuario = {
+username: email.value,
+password: password.value,
+ nombre: cliente.value,
+}
+if (valor === 'sessionStorage') {
     sessionStorage.setItem('usuario', JSON.stringify(usuario))
   }
   if (valor === 'localStorage') {
@@ -37,8 +35,6 @@ btn.addEventListener('click', (e) => {
 
   checkbox.checked ? guardar('localStorage') : guardar('sessionStorage')
 })
-
-
 let productos = [
     {id: 1, nombre:"papas McCain", cantidad: 1, descrip: "papas McCain x2,5kg", precio:700, img: 'assets/papas.jpg'},
     {id: 2, nombre:"Hamburguesas Swift", cantidad: 1, descrip: "Hamburguesas Swift clasicas x 160gr", precio:500, img: 'assets/descarga.jpg'},
@@ -53,7 +49,7 @@ const boxCarrito = document.getElementById("mi-carrito")
 
 
 let carrito =[]
-productos.forEach((producto) => {
+productos.forEach((producto)=> {
     const div = document.createElement('div') 
     div.classList.add('producto')
     div.innerHTML = `
@@ -97,10 +93,33 @@ const renovarCarrito = () => {
         div.innerHTML = `
         <p>${prod.nombre}</p>
         <p>${prod.precio}</p>
-        <p>cantidad: <spanid ="cantidad">${prod.cantidad}</span></p>
+        <p>cantidad: <span id ="cantidad">${prod.cantidad}</span></p>
         <button onclick = "eliminarDelCarrito${prod.id}" class="boton-eliminar">ELIMINAR</button>
         `
         boxCarrito.appendChild(div)
     })
 }
 
+
+const crearHTML = (arr) => {
+  let html;
+  for (const item of arr) {
+    const {id, producto, imagen} =item;
+
+    html = `
+    <div>
+    <div>
+    <img src="${imagen}">
+    <span>${producto.toUpperCase()}</span>
+    </div>
+    </div>`;
+    contenedor.innerHTML +=html;
+  }
+}
+
+fetch('./js/data.json')
+.then(res=>res.json())
+.then(data=>{
+  console.log(data)
+  renderProducto(data)
+})

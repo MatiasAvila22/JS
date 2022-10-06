@@ -1,0 +1,34 @@
+[
+   {
+      "id":1,
+      "nombre":"papas McCain",
+      "cantidad":1,
+      "descrip":"papas McCain x2,5kg",
+      "precio":700,
+      "img":"assets/papas.jpg"
+   },
+   {
+      "id":2,
+      "nombre":"Hamburguesas Swift",
+      "cantidad":1,
+      "descrip":"Hamburguesas Swift clasicas x 160gr",
+      "precio":500,
+      "img":"assets/descarga.jpg"
+   },
+   {
+      "id":3,
+      "nombre":"Patitas de pollo",
+      "cantidad":1,
+      "descrip":"patitas de pollo x500gr",
+      "precio":800,
+      "img":"assets/patitas.jpg"
+   },
+   {
+      "id":4,
+      "nombre":"Caritas McCain",
+      "cantidad":1,
+      "descrip":"Cartias McCain x 600gr",
+      "precio":600,
+      "img":"assets/caritas.jpg"
+   }
+]
